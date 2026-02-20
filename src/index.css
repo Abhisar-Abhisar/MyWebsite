@@ -1,0 +1,325 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Playfair+Display:wght@400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Premium PM Portfolio Design System */
+/* Clean, Light, Modern, Metric-Driven */
+
+@layer base {
+  :root {
+    /* Core Colors - Warm, Professional Light Theme */
+    --background: 40 33% 98%;
+    --foreground: 222 47% 11%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 222 47% 11%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 222 47% 11%;
+
+    /* Primary - Deep Slate Blue */
+    --primary: 222 47% 20%;
+    --primary-foreground: 40 33% 98%;
+
+    /* Secondary - Soft Cream */
+    --secondary: 40 25% 94%;
+    --secondary-foreground: 222 47% 20%;
+
+    /* Muted */
+    --muted: 40 20% 96%;
+    --muted-foreground: 220 13% 46%;
+
+    /* Accent - Warm Coral */
+    --accent: 12 76% 61%;
+    --accent-foreground: 0 0% 100%;
+
+    /* Highlight - Teal for metrics */
+    --highlight: 173 58% 39%;
+    --highlight-foreground: 0 0% 100%;
+
+    /* Gold for achievements */
+    --gold: 43 74% 49%;
+    --gold-foreground: 0 0% 100%;
+
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 40 20% 90%;
+    --input: 40 20% 90%;
+    --ring: 222 47% 20%;
+
+    --radius: 0.75rem;
+
+    /* Custom Properties */
+    --gradient-hero: linear-gradient(135deg, hsl(40 33% 98%) 0%, hsl(40 25% 94%) 100%);
+    --gradient-card: linear-gradient(180deg, hsl(0 0% 100%) 0%, hsl(40 25% 98%) 100%);
+    --gradient-accent: linear-gradient(135deg, hsl(12 76% 61%) 0%, hsl(20 80% 55%) 100%);
+    --gradient-primary: linear-gradient(135deg, hsl(222 47% 20%) 0%, hsl(222 47% 30%) 100%);
+    
+    --shadow-sm: 0 1px 2px 0 hsl(222 47% 11% / 0.03);
+    --shadow-md: 0 4px 6px -1px hsl(222 47% 11% / 0.05), 0 2px 4px -2px hsl(222 47% 11% / 0.03);
+    --shadow-lg: 0 10px 15px -3px hsl(222 47% 11% / 0.05), 0 4px 6px -4px hsl(222 47% 11% / 0.03);
+    --shadow-xl: 0 20px 25px -5px hsl(222 47% 11% / 0.08), 0 8px 10px -6px hsl(222 47% 11% / 0.04);
+    --shadow-card: 0 1px 3px 0 hsl(222 47% 11% / 0.04), 0 1px 2px -1px hsl(222 47% 11% / 0.04);
+    --shadow-card-hover: 0 10px 40px -10px hsl(222 47% 11% / 0.12);
+
+    /* Sidebar (keeping defaults) */
+    --sidebar-background: 0 0% 98%;
+    --sidebar-foreground: 240 5.3% 26.1%;
+    --sidebar-primary: 240 5.9% 10%;
+    --sidebar-primary-foreground: 0 0% 98%;
+    --sidebar-accent: 240 4.8% 95.9%;
+    --sidebar-accent-foreground: 240 5.9% 10%;
+    --sidebar-border: 220 13% 91%;
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-background text-foreground font-sans antialiased;
+    font-family: 'Inter', system-ui, sans-serif;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Playfair Display', Georgia, serif;
+    @apply font-semibold tracking-tight;
+  }
+}
+
+@layer components {
+  /* Navigation */
+  .nav-link {
+    @apply text-sm font-medium text-foreground/70 hover:text-foreground transition-colors duration-200 relative;
+  }
+
+  .nav-link::after {
+    @apply content-[''] absolute -bottom-1 left-0 w-0 h-0.5 bg-accent transition-all duration-300;
+  }
+
+  .nav-link:hover::after {
+    @apply w-full;
+  }
+
+  .nav-link-active {
+    @apply text-foreground;
+  }
+
+  .nav-link-active::after {
+    @apply w-full;
+  }
+
+  /* Hero Button Variants */
+  .btn-hero-primary {
+    @apply inline-flex items-center justify-center gap-2 px-6 py-3 rounded-full font-medium text-sm transition-all duration-300;
+    background: var(--gradient-primary);
+    color: hsl(var(--primary-foreground));
+    box-shadow: var(--shadow-md);
+  }
+
+  .btn-hero-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-xl);
+  }
+
+  .btn-hero-secondary {
+    @apply inline-flex items-center justify-center gap-2 px-6 py-3 rounded-full font-medium text-sm transition-all duration-300 border-2;
+    border-color: hsl(var(--primary));
+    color: hsl(var(--primary));
+    background: transparent;
+  }
+
+  .btn-hero-secondary:hover {
+    background: hsl(var(--primary));
+    color: hsl(var(--primary-foreground));
+    transform: translateY(-2px);
+  }
+
+  .btn-accent {
+    @apply inline-flex items-center justify-center gap-2 px-6 py-3 rounded-full font-medium text-sm transition-all duration-300;
+    background: var(--gradient-accent);
+    color: white;
+    box-shadow: var(--shadow-md);
+  }
+
+  .btn-accent:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-xl);
+  }
+
+  /* Section Styling */
+  .section-container {
+    @apply max-w-6xl mx-auto px-4 sm:px-6 lg:px-8;
+  }
+
+  .section-title {
+    @apply text-3xl md:text-4xl font-semibold text-foreground mb-4;
+    font-family: 'Playfair Display', Georgia, serif;
+  }
+
+  .section-subtitle {
+    @apply text-muted-foreground text-lg max-w-2xl;
+  }
+
+  /* Cards */
+  .card-base {
+    @apply rounded-2xl bg-card p-6 transition-all duration-300;
+    box-shadow: var(--shadow-card);
+  }
+
+  .card-base:hover {
+    box-shadow: var(--shadow-card-hover);
+    transform: translateY(-4px);
+  }
+
+  .card-metric {
+    @apply rounded-xl bg-gradient-to-br from-primary/5 to-primary/10 p-4 text-center;
+  }
+
+  .card-metric-value {
+    @apply text-2xl md:text-3xl font-bold text-primary;
+    font-family: 'Inter', system-ui, sans-serif;
+  }
+
+  .card-metric-label {
+    @apply text-xs text-muted-foreground mt-1 uppercase tracking-wider;
+  }
+
+  /* Timeline */
+  .timeline-line {
+    @apply absolute left-8 top-0 bottom-0 w-0.5 bg-gradient-to-b from-primary/20 via-accent/30 to-primary/20;
+  }
+
+  .timeline-dot {
+    @apply absolute left-6 w-5 h-5 rounded-full border-4 border-background z-10;
+    background: var(--gradient-accent);
+  }
+
+  /* Photo Upload Slots */
+  .photo-upload-slot {
+    @apply relative rounded-2xl border-2 border-dashed border-muted-foreground/30 bg-muted/50 flex items-center justify-center overflow-hidden transition-all duration-300;
+  }
+
+  .photo-upload-slot:hover {
+    @apply border-accent/50 bg-accent/5;
+  }
+
+  .photo-upload-slot-content {
+    @apply text-center text-muted-foreground p-4;
+  }
+
+  /* Skill Tags */
+  .skill-tag {
+    @apply inline-flex items-center px-4 py-2 rounded-full text-sm font-medium transition-all duration-200;
+    background: hsl(var(--secondary));
+    color: hsl(var(--secondary-foreground));
+  }
+
+  .skill-tag:hover {
+    background: hsl(var(--primary));
+    color: hsl(var(--primary-foreground));
+    transform: scale(1.05);
+  }
+
+  /* Achievement Badge */
+  .achievement-badge {
+    @apply inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-semibold;
+    background: hsl(var(--gold) / 0.15);
+    color: hsl(var(--gold));
+  }
+
+  /* Metric Highlight */
+  .metric-highlight {
+    @apply font-bold;
+    color: hsl(var(--highlight));
+  }
+
+  /* Portfolio Card */
+  .portfolio-card {
+    @apply rounded-2xl bg-card overflow-hidden transition-all duration-300;
+    box-shadow: var(--shadow-card);
+  }
+
+  .portfolio-card:hover {
+    box-shadow: var(--shadow-card-hover);
+    transform: translateY(-4px);
+  }
+
+  /* Chatbot Container */
+  .chatbot-container {
+    @apply rounded-2xl bg-gradient-to-br from-primary/5 to-accent/5 p-6 border border-border;
+  }
+
+  /* Footer */
+  .footer-gradient {
+    background: linear-gradient(180deg, hsl(var(--background)) 0%, hsl(var(--secondary)) 100%);
+  }
+}
+
+@layer utilities {
+  /* Animation Classes */
+  .animate-fade-in {
+    animation: fadeIn 0.6s ease-out forwards;
+  }
+
+  .animate-slide-up {
+    animation: slideUp 0.6s ease-out forwards;
+  }
+
+  .animate-scale-in {
+    animation: scaleIn 0.4s ease-out forwards;
+  }
+
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+
+  @keyframes slideUp {
+    from {
+      opacity: 0;
+      transform: translateY(30px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @keyframes scaleIn {
+    from {
+      opacity: 0;
+      transform: scale(0.95);
+    }
+    to {
+      opacity: 1;
+      transform: scale(1);
+    }
+  }
+
+  /* Stagger Animation Delays */
+  .delay-100 { animation-delay: 100ms; }
+  .delay-200 { animation-delay: 200ms; }
+  .delay-300 { animation-delay: 300ms; }
+  .delay-400 { animation-delay: 400ms; }
+  .delay-500 { animation-delay: 500ms; }
+
+  /* Glass Effect */
+  .glass {
+    @apply backdrop-blur-md bg-background/80;
+  }
+}
