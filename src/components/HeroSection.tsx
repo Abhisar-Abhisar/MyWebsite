@@ -1,5 +1,5 @@
 import { Mail, Phone, Linkedin, Download, ArrowDown } from 'lucide-react';
-import PhotoUploadSlot from './PhotoUploadSlot';
+import StaticImage from './StaticImage';
 
 const HeroSection = () => {
   return (
@@ -81,7 +81,11 @@ const HeroSection = () => {
               {/* Decorative Elements */}
               <div className="absolute -inset-4 bg-gradient-to-br from-accent/20 to-primary/10 rounded-full blur-2xl" />
               <div className="absolute -inset-1 bg-gradient-to-br from-accent/30 to-primary/20 rounded-full" />
-              <PhotoUploadSlot type="profile" label="Profile Photo" />
+              <StaticImage 
+                src="/images/profile.jpg" 
+                alt="Profile Photo" 
+                type="profile" 
+              />
             </div>
           </div>
         </div>

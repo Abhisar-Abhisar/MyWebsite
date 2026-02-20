@@ -1,5 +1,5 @@
 import { Briefcase, Calendar } from 'lucide-react';
-import PhotoUploadSlot from './PhotoUploadSlot';
+import StaticImage from './StaticImage';
 
 interface ExperienceRole {
   title: string;
@@ -12,6 +12,17 @@ interface ExperienceRole {
   }[];
   metrics?: { value: string; label: string }[];
 }
+
+// Helper function to get image path for a company
+const getCompanyImage = (company: string): string => {
+  const companyLower = company.toLowerCase();
+  if (companyLower.includes('hilabs')) return '/images/hilabs.jpg';
+  if (companyLower.includes('effisciences')) return '/images/effisciences.jpg';
+  if (companyLower.includes('drdo')) return '/images/drdo.jpg';
+  if (companyLower.includes('tata steel')) return '/images/tata-steel.jpg';
+  if (companyLower.includes('expansive')) return '/images/expansive.jpg';
+  return '/images/company-placeholder.jpg';
+};
 
 const experiences: ExperienceRole[] = [
   {
@@ -254,12 +265,12 @@ const ExperienceSection = () => {
                       )}
                     </div>
 
-                    {/* Photo Upload Slot */}
+                    {/* Company Photo */}
                     <div className="flex items-start justify-center lg:justify-end">
-                      <PhotoUploadSlot
+                      <StaticImage
+                        src={getCompanyImage(exp.company)}
+                        alt={`${exp.company} Photo`}
                         type="experience"
-                        label={`${exp.company} Photo`}
-                        storageKey={exp.company.toLowerCase().includes('hilabs') ? 'hilabs-photo' : undefined}
                         className="w-full max-w-xs"
                       />
                     </div>

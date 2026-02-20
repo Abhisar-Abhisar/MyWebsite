@@ -1,5 +1,5 @@
 import { Flag, Wrench, Users, DollarSign, Clock, Scale } from 'lucide-react';
-import PhotoUploadSlot from './PhotoUploadSlot';
+import StaticImage from './StaticImage';
 
 const highlights = [
   {
@@ -79,11 +79,12 @@ const Axlr8rSection = () => {
                 </div>
               </div>
 
-              {/* Image Upload Slot */}
+              {/* AXLR8R Photo */}
               <div className="flex items-center justify-center">
-                <PhotoUploadSlot
+                <StaticImage
+                  src="/images/axlr8r.jpg"
+                  alt="AXLR8R Photo"
                   type="project"
-                  label="AXLR8R Photo"
                   className="w-full aspect-[4/3]"
                 />
               </div>

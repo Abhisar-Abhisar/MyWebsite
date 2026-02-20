@@ -1,6 +1,6 @@
 import { useEffect, useRef } from 'react';
 import { Sparkles, BarChart3, Target, Leaf } from 'lucide-react';
-import PhotoUploadSlot from './PhotoUploadSlot';
+import StaticImage from './StaticImage';
 
 const ProjectsSection = () => {
   const chatbotRef = useRef<HTMLDivElement>(null);
@@ -104,11 +104,12 @@ const ProjectsSection = () => {
               </div>
             </div>
 
-            {/* Image Upload Slot */}
+            {/* Project Image */}
             <div className="flex items-center justify-center">
-              <PhotoUploadSlot
+              <StaticImage
+                src="/images/ethanol-project.jpg"
+                alt="Ethanol Blending Project"
                 type="project"
-                label="Project Image"
                 className="w-full aspect-[4/3]"
               />
             </div>
